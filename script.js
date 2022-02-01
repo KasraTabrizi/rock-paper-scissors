@@ -1,6 +1,8 @@
 let selectedPlayerGesture = "";
 let selectedComputerGesture = "";
 let statusGame = "";
+let playerScore = 0;
+let computerScore = 0;
 const gesturesArr = ["rock", "paper", "scissors"];
 
 //when start button is pressed
@@ -18,7 +20,7 @@ const gestureImage = document.querySelectorAll(".gesture_image");
 for (let i = 0; i < gestureImage.length; i++) {
   gestureImage[i].addEventListener("click", function () {
     selectedGesture = gestureImage[i].getElementsByTagName("img")[0].alt;
-    console.log("player selected", selectedGesture);
+    selectedPlayerGesture = selectedGesture;
 
     //put the selected gesture in the player gesture selected div
     let playerSelectedDIV =
@@ -33,7 +35,39 @@ for (let i = 0; i < gestureImage.length; i++) {
 
     //create random gesture for pc and put the image under the pc gesture selected div
     selectedComputerGesture = gesturesArr[Math.round(Math.random() * 2)];
+
+    //put the selected gesture in the player gesture selected div
+    let computerSelectedDIV = document.getElementsByClassName("pc_selected")[0];
+
+    computerSelectedDIV.textContent = "";
+
+    let computerImage = document.createElement("img");
+    computerImage.src = `/assets/${selectedComputerGesture}_pc.svg`;
+
+    computerSelectedDIV.appendChild(computerImage);
+
     console.log("Computer selected", selectedComputerGesture);
+    console.log("player selected", selectedPlayerGesture);
+
+    //check who won
+    playRound(selectedPlayerGesture, selectedComputerGesture);
+
+    console.log(statusGame);
+
+    //update status
+    let statusHeader = document.getElementById("status").childNodes[1];
+    statusHeader.textContent = statusGame;
+    console.log(statusHeader);
+
+    //update score
+    let playerHeader =
+      document.getElementById("player_container").childNodes[1];
+    let playerScoreSPAN = playerHeader.childNodes[1];
+    playerScoreSPAN.textContent = `:${playerScore}`;
+
+    let computerHeader = document.getElementById("pc_container").childNodes[1];
+    let computerScoreSPAN = computerHeader.childNodes[1];
+    computerScoreSPAN.textContent = `:${computerScore}`;
   });
 }
 
@@ -43,37 +77,39 @@ function playRound(selectedPlayerGesture, selectedComputerGesture) {
     statusGame = "It's a tie!";
   } else if (
     selectedPlayerGesture === "rock" &&
-    selectedComputerGesture === "scissor"
+    selectedComputerGesture === "scissors"
   ) {
     statusGame = "Player Wins!";
+    playerScore++;
   } else if (
     selectedPlayerGesture === "rock" &&
     selectedComputerGesture === "paper"
   ) {
     statusGame = "Computer Wins!";
+    computerScore++;
   } else if (
     selectedPlayerGesture === "paper" &&
     selectedComputerGesture === "rock"
   ) {
     statusGame = "Player Wins!";
+    playerScore++;
   } else if (
     selectedPlayerGesture === "paper" &&
-    selectedComputerGesture === "scissor"
+    selectedComputerGesture === "scissors"
   ) {
     statusGame = "Computer Wins!";
+    computerScore++;
   } else if (
-    selectedPlayerGesture === "scissor" &&
+    selectedPlayerGesture === "scissors" &&
     selectedComputerGesture === "paper"
   ) {
     statusGame = "Player Wins!";
+    playerScore++;
   } else if (
-    selectedPlayerGesture === "scissor" &&
+    selectedPlayerGesture === "scissors" &&
     selectedComputerGesture === "rock"
   ) {
     statusGame = "Computer Wins!";
+    computerScore++;
   }
 }
-
-//update the correct score
-
-//add message of who won

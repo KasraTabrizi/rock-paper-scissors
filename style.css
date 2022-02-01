@@ -73,6 +73,12 @@ button:hover {
   display: none;
 }
 
+#status h3 {
+  width: 20vw;
+  padding: 100px 0;
+  text-align: center;
+}
+
 #status_container {
   display: flex;
   justify-content: space-between;
