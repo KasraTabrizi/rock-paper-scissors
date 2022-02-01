@@ -46,18 +46,12 @@ for (let i = 0; i < gestureImage.length; i++) {
 
     computerSelectedDIV.appendChild(computerImage);
 
-    console.log("Computer selected", selectedComputerGesture);
-    console.log("player selected", selectedPlayerGesture);
-
     //check who won
     playRound(selectedPlayerGesture, selectedComputerGesture);
-
-    console.log(statusGame);
 
     //update status
     let statusHeader = document.getElementById("status").childNodes[1];
     statusHeader.textContent = statusGame;
-    console.log(statusHeader);
 
     //update score
     let playerHeader =
