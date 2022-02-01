@@ -76,21 +76,37 @@ button:hover {
 #status_container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 150px;
+  align-items: flex-start;
+  margin-bottom: 100px;
+  height: 40vh;
 }
 
 #status_container h2,
-.gesture_selected {
+.player_selected,
+.pc_selected {
   font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player_selected,
+.pc_selected {
+  height: 25vh;
 }
 
 #player_container,
 #pc_container {
+  width: 40%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
+}
+
+#player_container h2,
+#pc_container h2 {
+  margin: 0;
 }
 
 #choose_container {
