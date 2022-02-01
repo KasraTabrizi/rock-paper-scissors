@@ -29,7 +29,7 @@ for (let i = 0; i < gestureImage.length; i++) {
     playerSelectedDIV.textContent = "";
 
     let playerImage = document.createElement("img");
-    playerImage.src = `/assets/${selectedGesture}_player.svg`;
+    playerImage.src = `assets/${selectedGesture}_player.svg`;
 
     playerSelectedDIV.appendChild(playerImage);
 
@@ -42,7 +42,7 @@ for (let i = 0; i < gestureImage.length; i++) {
     computerSelectedDIV.textContent = "";
 
     let computerImage = document.createElement("img");
-    computerImage.src = `/assets/${selectedComputerGesture}_pc.svg`;
+    computerImage.src = `assets/${selectedComputerGesture}_pc.svg`;
 
     computerSelectedDIV.appendChild(computerImage);
 
